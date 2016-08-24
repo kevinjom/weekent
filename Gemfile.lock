@@ -1,0 +1,38 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (9.0.5)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    hashie (2.0.5)
+    jwt (1.5.4)
+    mime-types (2.99.2)
+    multi_json (1.12.1)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    netrc (0.11.0)
+    oauth2 (0.9.4)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
+    rack (1.6.4)
+    rest-client (1.7.3)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    weibo_2 (0.1.7)
+      hashie (~> 2.0.4)
+      multi_json (~> 1)
+      oauth2 (~> 0.9.1)
+      rest-client (~> 1.7.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  byebug
+  weibo_2
+
+BUNDLED WITH
+   1.12.4
