@@ -2,7 +2,7 @@ module Weekent
   module Handler
     class None
       def self.handle(*input)
-        'invalid command, type h for help'
+        'invalid command, type help for help'
       end
     end
 

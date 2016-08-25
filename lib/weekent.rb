@@ -1,5 +1,6 @@
 require 'weibo_2'
 require 'webrick'
+require 'colorize'
 require_relative 'handler/handlers.rb'
 require_relative 'handler/handler.rb'
 require_relative 'client/weibo.rb'
@@ -12,15 +13,20 @@ module Weekent
       @client = Weekent::Weibo.client
       system %Q{open "#{client.authorize_url}"}
       server = WEBrick::HTTPServer.new :Port => 9999
+
+      repl_thread=nil
       server.mount_proc '/weibo/callback' do |req, res|
         code = /code=([^&]+)/.match(req.query_string)[1]
         puts code
         access_token = client.auth_code.get_token code
         refresh_session access_token
+
+        repl_thread = Thread.new { repl }
+
         server.shutdown
-        repl
       end
       server.start
+      repl_thread.join
     end
 
     private
@@ -41,7 +47,7 @@ module Weekent
 
     def repl
       loop do
-        print "[#{username}]: "
+        print "[@#{username}]: ".colorize(:magenta)
         puts handle_cmd(gets.chomp)
       end
     end
